@@ -257,29 +257,35 @@ function UndoMatrixFigure() {
 
                 {/* Readouts in the rail beside the drawing. */}
                 <g style={{ fontVariantNumeric: "tabular-nums", ...EASE_150 }}>
-                    <text x={RAIL_X} y={72} fontSize="12" fill={INK_STRUCTURE}>
+                    <text x={RAIL_X} y={70} fontSize="13" fill={INK_STRUCTURE}>
                         your undo matrix N
                     </text>
-                    <text x={RAIL_X} y={96} fontSize="11" fill={ACCENT}>
-                        {`first column  (${fmtEntry(n11)}, ${fmtEntry(n21)})`}
+                    <text x={RAIL_X} y={100} fontSize="13" fill={ACCENT}>
+                        first column
                     </text>
-                    <text x={RAIL_X} y={118} fontSize="11" fill={ACCENT_TWO}>
-                        {`second column  (${fmtEntry(n12)}, ${fmtEntry(n22)})`}
+                    <text x={RAIL_X} y={124} fontSize="15" fill={ACCENT}>
+                        {`(${fmtEntry(n11)}, ${fmtEntry(n21)})`}
+                    </text>
+                    <text x={RAIL_X} y={156} fontSize="13" fill={ACCENT_TWO}>
+                        second column
+                    </text>
+                    <text x={RAIL_X} y={180} fontSize="15" fill={ACCENT_TWO}>
+                        {`(${fmtEntry(n12)}, ${fmtEntry(n22)})`}
                     </text>
 
-                    <text x={RAIL_X} y={166} fontSize="12" fill={INK_STRUCTURE}>
+                    <text x={RAIL_X} y={214} fontSize="13" fill={INK_STRUCTURE}>
                         N × M
                     </text>
-                    <path d={`M ${RAIL_X + 30} 178 L ${RAIL_X + 22} 178 L ${RAIL_X + 22} 226 L ${RAIL_X + 30} 226`} fill="none" stroke={INK_STRUCTURE} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d={`M ${RAIL_X + 122} 178 L ${RAIL_X + 130} 178 L ${RAIL_X + 130} 226 L ${RAIL_X + 122} 226`} fill="none" stroke={INK_STRUCTURE} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <g fontSize="13" fill={INK} textAnchor="middle">
-                        <text x={RAIL_X + 52} y={197}>{fmtEntry(combined[0][0])}</text>
-                        <text x={RAIL_X + 100} y={197}>{fmtEntry(combined[0][1])}</text>
-                        <text x={RAIL_X + 52} y={219}>{fmtEntry(combined[1][0])}</text>
-                        <text x={RAIL_X + 100} y={219}>{fmtEntry(combined[1][1])}</text>
+                    <path d={`M ${RAIL_X + 33} 226 L ${RAIL_X + 25} 226 L ${RAIL_X + 25} 276 L ${RAIL_X + 33} 276`} fill="none" stroke={INK_STRUCTURE} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d={`M ${RAIL_X + 137} 226 L ${RAIL_X + 145} 226 L ${RAIL_X + 145} 276 L ${RAIL_X + 137} 276`} fill="none" stroke={INK_STRUCTURE} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <g fontSize="15" fill={INK} textAnchor="middle">
+                        <text x={RAIL_X + 55} y={246}>{fmtEntry(combined[0][0])}</text>
+                        <text x={RAIL_X + 115} y={246}>{fmtEntry(combined[0][1])}</text>
+                        <text x={RAIL_X + 55} y={270}>{fmtEntry(combined[1][0])}</text>
+                        <text x={RAIL_X + 115} y={270}>{fmtEntry(combined[1][1])}</text>
                     </g>
 
-                    <text x={RAIL_X} y={258} fontSize="13" fill={INK} fontWeight={home ? "600" : "400"}>
+                    <text x={RAIL_X} y={300} fontSize="14" fill={INK} fontWeight={home ? "600" : "400"}>
                         {home ? "N × M is the identity" : "not the identity yet"}
                     </text>
                 </g>
@@ -288,7 +294,7 @@ function UndoMatrixFigure() {
             <div className="flex justify-center px-6 pb-5">
                 <button
                     type="button"
-                    className="rounded-lg px-3 py-1.5 text-[12px] text-[#64748B] transition-colors hover:bg-slate-50 hover:text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300"
+                    className="rounded-lg px-3 py-1.5 text-[14px] text-[#64748B] transition-colors hover:bg-slate-50 hover:text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300"
                     onClick={() => {
                         setVar("inverseColumn1X", 0.5);
                         setVar("inverseColumn1Y", 1);

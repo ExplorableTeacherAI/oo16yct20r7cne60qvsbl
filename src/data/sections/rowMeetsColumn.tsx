@@ -50,15 +50,15 @@ const CELL_NAMES = ["Maya at Shop X", "Maya at Shop Y", "Sam at Shop X", "Sam at
 
 const VIEW_WIDTH = 560;
 const VIEW_HEIGHT = 280;
-const CELL_W = 44;
-const CELL_H = 38;
+const CELL_W = 50;
+const CELL_H = 42;
 const A_X = 64;
 const A_Y = 146;
 const B_X = 196;
-const B_Y = 52;
+const B_Y = 50;
 const C_X = 196;
 const C_Y = 146;
-const WORK_X = 310;
+const WORK_X = 320;
 
 const INK = "#334155";
 const INK_STRUCTURE = "#64748B";
@@ -98,9 +98,9 @@ function MatrixGrid({
                         />
                         <text
                             x={x + j * CELL_W + CELL_W / 2}
-                            y={y + i * CELL_H + CELL_H / 2 + 5}
+                            y={y + i * CELL_H + CELL_H / 2 + 6}
                             textAnchor="middle"
-                            fontSize="15"
+                            fontSize="17"
                             fill={color}
                             style={{ fontVariantNumeric: "tabular-nums" }}
                         >
@@ -206,26 +206,26 @@ function RowMeetsColumnFigure() {
                 </g>
 
                 {/* Direct labels. */}
-                <g fontSize="11" fill={INK_STRUCTURE} style={EASE_150}>
-                    <text x={B_X + CELL_W / 2} y={42} textAnchor="middle" opacity={dim("priceColumn")}>
+                <g fontSize="13" fill={INK_STRUCTURE} style={EASE_150}>
+                    <text x={B_X + CELL_W / 2} y={40} textAnchor="middle" opacity={dim("priceColumn")}>
                         Shop X
                     </text>
-                    <text x={B_X + CELL_W + CELL_W / 2} y={42} textAnchor="middle" opacity={dim("priceColumn")}>
+                    <text x={B_X + CELL_W + CELL_W / 2} y={40} textAnchor="middle" opacity={dim("priceColumn")}>
                         Shop Y
                     </text>
-                    <text x={A_X + CELL_W / 2} y={140} textAnchor="middle" opacity={dim("orderRow")}>
+                    <text x={A_X + CELL_W / 2} y={138} textAnchor="middle" opacity={dim("orderRow")}>
                         samosa
                     </text>
-                    <text x={A_X + CELL_W + CELL_W / 2} y={140} textAnchor="middle" opacity={dim("orderRow")}>
+                    <text x={A_X + CELL_W + CELL_W / 2} y={138} textAnchor="middle" opacity={dim("orderRow")}>
                         juice
                     </text>
-                    <text x={A_X - 10} y={A_Y + 24} textAnchor="end" opacity={dim("orderRow")}>
+                    <text x={A_X - 8} y={A_Y + 26} textAnchor="end" opacity={dim("orderRow")}>
                         Maya
                     </text>
-                    <text x={A_X - 10} y={A_Y + CELL_H + 24} textAnchor="end" opacity={dim("orderRow")}>
+                    <text x={A_X - 8} y={A_Y + CELL_H + 26} textAnchor="end" opacity={dim("orderRow")}>
                         Sam
                     </text>
-                    <text x={C_X + CELL_W} y={244} textAnchor="middle" opacity={dim("")}>
+                    <text x={C_X + CELL_W} y={252} textAnchor="middle" opacity={dim("")}>
                         what each student pays at each shop
                     </text>
                 </g>
@@ -247,10 +247,10 @@ function RowMeetsColumnFigure() {
 
                 {/* The working for the selected bill — beside the drawing, never over it. */}
                 <g style={{ fontVariantNumeric: "tabular-nums", ...EASE_150 }}>
-                    <text x={WORK_X} y={162} fontSize="11" fill={INK_STRUCTURE}>
+                    <text x={WORK_X} y={160} fontSize="13" fill={INK_STRUCTURE}>
                         {CELL_NAMES[index]}
                     </text>
-                    <text x={WORK_X} y={192} fontSize="15" fill={INK}>
+                    <text x={WORK_X} y={194} fontSize="17" fill={INK}>
                         <tspan fill={ACCENT}>{ORDERS[row][0]}</tspan>
                         {" × "}
                         <tspan fill={ACCENT_TWO}>{PRICES[0][col]}</tspan>
@@ -259,7 +259,7 @@ function RowMeetsColumnFigure() {
                         {" × "}
                         <tspan fill={ACCENT_TWO}>{PRICES[1][col]}</tspan>
                     </text>
-                    <text x={WORK_X} y={220} fontSize="15" fill={INK} fontWeight="600">
+                    <text x={WORK_X} y={224} fontSize="17" fill={INK} fontWeight="600">
                         {`= ${firstProduct} + ${secondProduct} = ${BILLS[row][col]}`}
                     </text>
                 </g>

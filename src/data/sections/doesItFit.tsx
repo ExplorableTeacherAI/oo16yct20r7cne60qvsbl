@@ -193,13 +193,13 @@ function DoesItFitFigure() {
                 </defs>
 
                 {/* Matrix A. */}
-                <text x={A_LEFT} y={aTop - 14} fontSize="12" fill={INK_STRUCTURE}>
+                <text x={A_LEFT} y={aTop - 14} fontSize="14" fill={INK_STRUCTURE}>
                     A
                 </text>
                 <BlockGrid x={A_LEFT} y={aTop} columns={columnsOfA} rows={A_ROWS} stroke={INK_STRUCTURE} />
 
                 {/* Matrix B. */}
-                <text x={bLeft} y={CENTER_Y - (MAX_INNER * UNIT) / 2 - 14} fontSize="12" fill={INK_STRUCTURE}>
+                <text x={bLeft} y={CENTER_Y - (MAX_INNER * UNIT) / 2 - 14} fontSize="14" fill={INK_STRUCTURE}>
                     B
                 </text>
                 <BlockGrid x={bLeft} y={bTop} columns={B_COLUMNS} rows={rowsOfB} stroke={INK_STRUCTURE} />
@@ -225,7 +225,7 @@ function DoesItFitFigure() {
                 />
 
                 {/* Shape labels, directly under each block. */}
-                <g fontSize="12" style={{ fontVariantNumeric: "tabular-nums" }}>
+                <g fontSize="14" style={{ fontVariantNumeric: "tabular-nums" }}>
                     <text x={A_LEFT + aWidth / 2} y={LABEL_Y} textAnchor="middle" fill={INK}>
                         <tspan>{A_ROWS}</tspan>
                         <tspan fill={INK_STRUCTURE}> × </tspan>
@@ -243,7 +243,7 @@ function DoesItFitFigure() {
                     <text x={equalsX} y={CENTER_Y + 6} fontSize="18" fill={INK_STRUCTURE} textAnchor="middle">
                         =
                     </text>
-                    <text x={productLeft} y={productTop - 14} fontSize="12" fill={INK_STRUCTURE}>
+                    <text x={productLeft} y={productTop - 14} fontSize="14" fill={INK_STRUCTURE}>
                         AB
                     </text>
                     <BlockGrid
@@ -257,7 +257,7 @@ function DoesItFitFigure() {
                         x={productLeft + (B_COLUMNS * UNIT) / 2}
                         y={LABEL_Y}
                         textAnchor="middle"
-                        fontSize="12"
+                        fontSize="14"
                         fill={INK}
                         style={{ fontVariantNumeric: "tabular-nums" }}
                     >
@@ -270,7 +270,7 @@ function DoesItFitFigure() {
                     x={VIEW_WIDTH / 2}
                     y={VERDICT_Y}
                     textAnchor="middle"
-                    fontSize="13"
+                    fontSize="15"
                     fill={fits ? INK : INK_STRUCTURE}
                     style={{ fontVariantNumeric: "tabular-nums" }}
                 >

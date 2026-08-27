@@ -99,11 +99,11 @@ function MiniMatrix({
     dimmed: number;
 }) {
     const top = MATRIX_TOP;
-    const bottom = MATRIX_TOP + 46;
+    const bottom = MATRIX_TOP + 50;
     return (
         <g opacity={dimmed} style={EASE_150}>
             <path
-                d={`M ${centerX - 34} ${top} L ${centerX - 42} ${top} L ${centerX - 42} ${bottom} L ${centerX - 34} ${bottom}`}
+                d={`M ${centerX - 38} ${top} L ${centerX - 46} ${top} L ${centerX - 46} ${bottom} L ${centerX - 38} ${bottom}`}
                 fill="none"
                 stroke={INK_STRUCTURE}
                 strokeWidth="1.5"
@@ -111,18 +111,18 @@ function MiniMatrix({
                 strokeLinejoin="round"
             />
             <path
-                d={`M ${centerX + 34} ${top} L ${centerX + 42} ${top} L ${centerX + 42} ${bottom} L ${centerX + 34} ${bottom}`}
+                d={`M ${centerX + 38} ${top} L ${centerX + 46} ${top} L ${centerX + 46} ${bottom} L ${centerX + 38} ${bottom}`}
                 fill="none"
                 stroke={INK_STRUCTURE}
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
             />
-            <g fontSize="13" fill={INK} textAnchor="middle" style={{ fontVariantNumeric: "tabular-nums" }}>
-                <text x={centerX - 17} y={top + 18}>{entries[0]}</text>
-                <text x={centerX + 17} y={top + 18}>{entries[1]}</text>
-                <text x={centerX - 17} y={top + 40}>{entries[2]}</text>
-                <text x={centerX + 17} y={top + 40}>{entries[3]}</text>
+            <g fontSize="15" fill={INK} textAnchor="middle" style={{ fontVariantNumeric: "tabular-nums" }}>
+                <text x={centerX - 20} y={top + 19}>{entries[0]}</text>
+                <text x={centerX + 20} y={top + 19}>{entries[1]}</text>
+                <text x={centerX - 20} y={top + 42}>{entries[2]}</text>
+                <text x={centerX + 20} y={top + 42}>{entries[3]}</text>
             </g>
         </g>
     );
@@ -263,7 +263,7 @@ function OrderMattersFigure() {
                     </filter>
                 </defs>
 
-                <g fontSize="12" fill={INK_STRUCTURE} style={EASE_150}>
+                <g fontSize="14" fill={INK_STRUCTURE} style={EASE_150}>
                     <text x={LEFT_ORIGIN_X} y={TITLE_Y} textAnchor="middle" opacity={dim("stretchFirst")}>
                         stretch, then turn
                     </text>
@@ -290,13 +290,13 @@ function OrderMattersFigure() {
                     x={VIEW_WIDTH / 2}
                     y={VERDICT_Y}
                     textAnchor="middle"
-                    fontSize="13"
+                    fontSize="15"
                     fill={INK}
                     style={{ fontVariantNumeric: "tabular-nums" }}
                 >
                     {same
-                        ? "with a stretch of 1.0 the two orders agree"
-                        : `with a stretch of ${formatStretch(stretch)} the two orders give different matrices`}
+                        ? "a stretch of 1.0 — the two orders agree"
+                        : `a stretch of ${formatStretch(stretch)} — the two orders differ`}
                 </text>
 
                 {/* The one handle: the stretch, grabbed on the widened shape's edge. */}

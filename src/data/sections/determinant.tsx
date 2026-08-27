@@ -278,26 +278,30 @@ function DeterminantFigure() {
 
                 {/* Readouts, in a rail beside the drawing. */}
                 <g style={{ fontVariantNumeric: "tabular-nums", ...EASE_150 }}>
-                    <text x={RAIL_X} y={96} fontSize="11" fill={ACCENT} opacity={dim("column1")}>
-                        {`first column  (${fmtEntry(a)}, ${fmtEntry(c)})`}
+                    <text x={RAIL_X} y={86} fontSize="13" fill={ACCENT} opacity={dim("column1")}>
+                        first column
                     </text>
-                    <text x={RAIL_X} y={120} fontSize="11" fill={ACCENT_TWO} opacity={dim("column2")}>
-                        {`second column  (${fmtEntry(b)}, ${fmtEntry(d)})`}
+                    <text x={RAIL_X} y={110} fontSize="15" fill={ACCENT} opacity={dim("column1")}>
+                        {`(${fmtEntry(a)}, ${fmtEntry(c)})`}
                     </text>
-                    <text x={RAIL_X} y={168} fontSize="12" fill={INK_STRUCTURE} opacity={dim("area")}>
-                        {`${fmtEntry(a)} × ${fmtEntry(d)} − ${fmtEntry(b)} × ${fmtEntry(c)}`}
+                    <text x={RAIL_X} y={148} fontSize="13" fill={ACCENT_TWO} opacity={dim("column2")}>
+                        second column
                     </text>
-                    <text x={RAIL_X} y={200} fontSize="17" fill={INK} fontWeight="600" opacity={dim("area")}>
+                    <text x={RAIL_X} y={172} fontSize="15" fill={ACCENT_TWO} opacity={dim("column2")}>
+                        {`(${fmtEntry(b)}, ${fmtEntry(d)})`}
+                    </text>
+                    <text x={RAIL_X} y={214} fontSize="13" fill={INK_STRUCTURE} opacity={dim("area")}>
+                        {`${fmtEntry(a)}×${fmtEntry(d)} − ${fmtEntry(b)}×${fmtEntry(c)}`}
+                    </text>
+                    <text x={RAIL_X} y={246} fontSize="17" fill={INK} fontWeight="600" opacity={dim("area")}>
                         {`det = ${fmtArea(determinant)}`}
                     </text>
-                    <text x={RAIL_X} y={228} fontSize="12" fill={INK_STRUCTURE} opacity={dim("area")}>
-                        {flat
-                            ? "squashed flat, no area left"
-                            : `area = ${fmtArea(Math.abs(determinant))} squares`}
+                    <text x={RAIL_X} y={272} fontSize="13" fill={INK_STRUCTURE} opacity={dim("area")}>
+                        {flat ? "squashed flat" : `area = ${fmtArea(Math.abs(determinant))} squares`}
                     </text>
                     {determinant < -0.05 && (
-                        <text x={RAIL_X} y={252} fontSize="12" fill={INK_STRUCTURE} opacity={dim("area")}>
-                            flipped over, so it counts as negative
+                        <text x={RAIL_X} y={296} fontSize="13" fill={INK_STRUCTURE} opacity={dim("area")}>
+                            flipped, so negative
                         </text>
                     )}
                 </g>

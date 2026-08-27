@@ -279,7 +279,7 @@ export const FigureSlider: React.FC<FigureSliderProps> = ({
         <label
             id={id}
             className={cn(
-                "flex w-full items-center gap-3 text-xs text-[#64748B]",
+                "flex w-full items-center gap-3 text-sm text-[#64748B]",
                 className,
             )}
         >
