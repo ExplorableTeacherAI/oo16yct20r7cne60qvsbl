@@ -16,8 +16,10 @@ import {
     InlineClozeChoice,
     InlineClozeInput,
     InlineFeedback,
+    InlineFormula,
     InlineLinkedHighlight,
     InteractionHintSequence,
+    Table,
 } from "@/components/atoms";
 import { Figure, FormulaBlock } from "@/components/molecules";
 import { useVar, useSetVar } from "@/stores";
@@ -418,6 +420,47 @@ export const determinantBlocks: ReactElement[] = [
                 area zero, determinant zero, and a whole plane crushed onto a single
                 stroke.
             </EditableParagraph>
+        </Block>
+    </StackLayout>,
+
+    <StackLayout key="layout-determinant-rules" maxWidth="xl">
+        <Block id="determinant-rules" padding="sm">
+            <Table
+                columns={[
+                    { header: "The determinant reads", align: "center", width: 200 },
+                    { header: "What it is telling you" },
+                ]}
+                rows={[
+                    {
+                        cells: [
+                            <InlineFormula latex="\det M = 0" colorMap={{}} />,
+                            "the shape is flattened onto a line, nothing can be brought back, and the matrix has no inverse",
+                        ],
+                        highlight: true,
+                        highlightColor: "#62D0AD",
+                    },
+                    {
+                        cells: [
+                            <InlineFormula latex="\det M = 1" colorMap={{}} />,
+                            "areas come out exactly as they went in, even though the shape may be turned or skewed",
+                        ],
+                    },
+                    {
+                        cells: [
+                            <InlineFormula latex="\det M = 2" colorMap={{}} />,
+                            "every area is doubled, and a determinant of 0.5 would halve it instead",
+                        ],
+                    },
+                    {
+                        cells: [
+                            <InlineFormula latex="\det M < 0" colorMap={{}} />,
+                            "the shape has been flipped over, and its area is the determinant without the minus sign",
+                        ],
+                    },
+                ]}
+                color="#62D0AD"
+                caption="Memory tip: no area left means no way back, so a matrix with determinant zero can never be inverted."
+            />
         </Block>
     </StackLayout>,
 
