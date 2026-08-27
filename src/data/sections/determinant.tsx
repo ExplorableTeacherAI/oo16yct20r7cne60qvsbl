@@ -276,31 +276,49 @@ function DeterminantFigure() {
                 <g {...hoverProps("column1")}>{arrow(a, c, ACCENT, "column1", "First column")}</g>
                 <g {...hoverProps("column2")}>{arrow(b, d, ACCENT_TWO, "column2", "Second column")}</g>
 
-                {/* Readouts, in a rail beside the drawing. */}
+                {/* The matrix itself, then what its determinant works out to. */}
                 <g style={{ fontVariantNumeric: "tabular-nums", ...EASE_150 }}>
-                    <text x={RAIL_X} y={86} fontSize="13" fill={ACCENT} opacity={dim("column1")}>
-                        first column
+                    <text x={RAIL_X} y={88} fontSize="13" fill={INK_STRUCTURE}>
+                        the matrix M
                     </text>
-                    <text x={RAIL_X} y={110} fontSize="15" fill={ACCENT} opacity={dim("column1")}>
-                        {`(${fmtEntry(a)}, ${fmtEntry(c)})`}
-                    </text>
-                    <text x={RAIL_X} y={148} fontSize="13" fill={ACCENT_TWO} opacity={dim("column2")}>
-                        second column
-                    </text>
-                    <text x={RAIL_X} y={172} fontSize="15" fill={ACCENT_TWO} opacity={dim("column2")}>
-                        {`(${fmtEntry(b)}, ${fmtEntry(d)})`}
-                    </text>
-                    <text x={RAIL_X} y={214} fontSize="13" fill={INK_STRUCTURE} opacity={dim("area")}>
+                    <path
+                        d={`M ${RAIL_X + 16} 100 L ${RAIL_X + 8} 100 L ${RAIL_X + 8} 154 L ${RAIL_X + 16} 154`}
+                        fill="none"
+                        stroke={INK_STRUCTURE}
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    />
+                    <path
+                        d={`M ${RAIL_X + 120} 100 L ${RAIL_X + 128} 100 L ${RAIL_X + 128} 154 L ${RAIL_X + 120} 154`}
+                        fill="none"
+                        stroke={INK_STRUCTURE}
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    />
+                    <g fontSize="15" textAnchor="middle">
+                        <g fill={ACCENT} opacity={dim("column1")}>
+                            <text x={RAIL_X + 45} y={122}>{fmtEntry(a)}</text>
+                            <text x={RAIL_X + 45} y={146}>{fmtEntry(c)}</text>
+                        </g>
+                        <g fill={ACCENT_TWO} opacity={dim("column2")}>
+                            <text x={RAIL_X + 95} y={122}>{fmtEntry(b)}</text>
+                            <text x={RAIL_X + 95} y={146}>{fmtEntry(d)}</text>
+                        </g>
+                    </g>
+
+                    <text x={RAIL_X} y={196} fontSize="13" fill={INK_STRUCTURE} opacity={dim("area")}>
                         {`${fmtEntry(a)}×${fmtEntry(d)} − ${fmtEntry(b)}×${fmtEntry(c)}`}
                     </text>
-                    <text x={RAIL_X} y={246} fontSize="17" fill={INK} fontWeight="600" opacity={dim("area")}>
+                    <text x={RAIL_X} y={228} fontSize="17" fill={INK} fontWeight="600" opacity={dim("area")}>
                         {`det = ${fmtArea(determinant)}`}
                     </text>
-                    <text x={RAIL_X} y={272} fontSize="13" fill={INK_STRUCTURE} opacity={dim("area")}>
+                    <text x={RAIL_X} y={254} fontSize="13" fill={INK_STRUCTURE} opacity={dim("area")}>
                         {flat ? "squashed flat" : `area = ${fmtArea(Math.abs(determinant))} squares`}
                     </text>
                     {determinant < -0.05 && (
-                        <text x={RAIL_X} y={296} fontSize="13" fill={INK_STRUCTURE} opacity={dim("area")}>
+                        <text x={RAIL_X} y={278} fontSize="13" fill={INK_STRUCTURE} opacity={dim("area")}>
                             flipped, so negative
                         </text>
                     )}
@@ -335,7 +353,7 @@ export const determinantBlocks: ReactElement[] = [
         <Block id="determinant-setup" padding="sm">
             <EditableParagraph id="para-determinant-setup" blockId="determinant-setup">
                 A matrix does not only move a shape, it changes how much room the shape
-                takes up. The pale square holds one unit of area, and the{" "}
+                takes up. Here is the one we are about to measure, whose{" "}
                 <InlineLinkedHighlight
                     varName="determinantHighlight"
                     highlightId="column1"
@@ -352,9 +370,23 @@ export const determinantBlocks: ReactElement[] = [
                 >
                     second column
                 </InlineLinkedHighlight>{" "}
-                sweep it into a parallelogram. Drag either arrow tip and watch the area
-                follow.
+                sweep the pale unit square into a parallelogram. Drag either arrow tip
+                and watch the area follow.
             </EditableParagraph>
+        </Block>
+    </StackLayout>,
+
+    <StackLayout key="layout-determinant-matrix" maxWidth="xl">
+        <Block id="determinant-matrix" padding="lg">
+            <FormulaBlock
+                latex="M = \begin{pmatrix} \scrub{determinantColumn1X} & \scrub{determinantColumn2X} \\ \scrub{determinantColumn1Y} & \scrub{determinantColumn2Y} \end{pmatrix}"
+                variables={scrubVarsFromDefinitions([
+                    "determinantColumn1X",
+                    "determinantColumn2X",
+                    "determinantColumn1Y",
+                    "determinantColumn2Y",
+                ])}
+            />
         </Block>
     </StackLayout>,
 
