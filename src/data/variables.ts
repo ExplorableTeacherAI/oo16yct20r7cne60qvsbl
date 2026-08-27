@@ -81,84 +81,272 @@ export interface VariableDefinition {
  *    { defaultValue: { x: 5, y: 10 }, type: 'object', schema: '{ x: number, y: number }' }
  */
 export const variableDefinitions: Record<string, VariableDefinition> = {
-    // ========================================
-    // ADD YOUR VARIABLES HERE
-    // ========================================
-
-    // Uncomment and modify these examples for your lesson:
-
-    /*
     // ─────────────────────────────────────────
-    // NUMBER - Use with sliders
+    // SECTION 2 — Row meets column
     // ─────────────────────────────────────────
-    myValue: {
-        defaultValue: 5,
+    productCellIndex: {
+        defaultValue: 0,
         type: 'number',
-        label: 'My Value',
-        description: 'A number that controls something',
-        unit: 'm',           // optional unit display
+        label: 'Result cell',
+        description: 'Which cell of the cost matrix the selector sits on (0 top-left, 1 top-right, 2 bottom-left, 3 bottom-right)',
         min: 0,
-        max: 10,
-        step: 0.5,
+        max: 3,
+        step: 1,
+        color: '#62D0AD',
     },
-
-    // ─────────────────────────────────────────
-    // TEXT - Free text input
-    // ─────────────────────────────────────────
-    lessonTitle: {
-        defaultValue: 'My Lesson',
+    rowColumnHighlight: {
+        defaultValue: '',
         type: 'text',
-        label: 'Lesson Title',
-        description: 'The title of your lesson',
-        placeholder: 'Enter a title...',
+        label: 'Row column highlight',
+        description: 'Which part of the multiplication is highlighted: order-row or price-column',
+        color: '#62D0AD',
+        bgColor: 'rgba(98, 208, 173, 0.18)',
     },
-
-    // ─────────────────────────────────────────
-    // SELECT - Dropdown with options
-    // ─────────────────────────────────────────
-    difficulty: {
-        defaultValue: 'medium',
+    answerProductEntry: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Row times column answer',
+        description: 'Student answer for one entry of a product matrix',
+        placeholder: '???',
+        correctAnswer: '23',
+        color: '#62D0AD',
+    },
+    answerEntryMethod: {
+        defaultValue: '',
         type: 'select',
-        label: 'Difficulty',
-        description: 'The difficulty level of the lesson',
-        options: ['easy', 'medium', 'hard', 'expert'],
+        label: 'How one entry is made',
+        description: 'Student choice for how a single entry of a product is built',
+        placeholder: '???',
+        correctAnswer: 'multiply a row by a column and add',
+        options: ['multiply the matching entries', 'multiply a row by a column and add', 'add the two matrices'],
+        color: '#8E90F5',
     },
 
     // ─────────────────────────────────────────
-    // BOOLEAN - Toggle switch
+    // SECTION 3 — Does it even fit?
     // ─────────────────────────────────────────
-    showHints: {
-        defaultValue: true,
-        type: 'boolean',
-        label: 'Show Hints',
-        description: 'Toggle to show or hide hints',
+    matrixAColumns: {
+        defaultValue: 3,
+        type: 'number',
+        label: 'Columns of A',
+        description: 'Number of columns in the left matrix A',
+        min: 1,
+        max: 4,
+        step: 1,
+        color: '#62D0AD',
+    },
+    matrixBRows: {
+        defaultValue: 2,
+        type: 'number',
+        label: 'Rows of B',
+        description: 'Number of rows in the right matrix B',
+        min: 1,
+        max: 4,
+        step: 1,
+        color: '#8E90F5',
+    },
+    answerFitPossible: {
+        defaultValue: '',
+        type: 'select',
+        label: 'Is the product possible',
+        description: 'Student choice for whether a 3x2 times 3x2 product exists',
+        placeholder: '???',
+        correctAnswer: 'not possible',
+        options: ['not possible', 'possible, giving a 3 by 2 result', 'possible, giving a 2 by 2 result'],
+        color: '#8E90F5',
+    },
+    answerProductOrder: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Order of the product',
+        description: 'Student answer for the order of a 4x2 times 2x5 product',
+        placeholder: '???',
+        correctAnswer: ['4x5', '4×5', '4 by 5', '4*5', '4 x 5'],
+        color: '#62D0AD',
     },
 
     // ─────────────────────────────────────────
-    // ARRAY - List of numbers
+    // SECTION 4 — Why AB is not BA
     // ─────────────────────────────────────────
-    dataPoints: {
-        defaultValue: [1, 4, 9, 16, 25],
-        type: 'array',
-        label: 'Data Points',
-        description: 'Y-values for plotting a graph',
+    stretchFactor: {
+        defaultValue: 1,
+        type: 'number',
+        label: 'Stretch factor',
+        description: 'How much the stretch matrix widens the shape along x',
+        min: 1,
+        max: 2.5,
+        step: 0.1,
+        color: '#62D0AD',
+    },
+    orderMattersHighlight: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Order matters highlight',
+        description: 'Which of the two orderings is highlighted: stretch-first or rotate-first',
+        color: '#62D0AD',
+        bgColor: 'rgba(98, 208, 173, 0.18)',
+    },
+    answerCommute: {
+        defaultValue: '',
+        type: 'select',
+        label: 'When matrices commute',
+        description: 'Student choice for how often AB equals BA',
+        placeholder: '???',
+        correctAnswer: 'only in special cases',
+        options: ['always', 'never', 'only in special cases'],
+        color: '#8E90F5',
+    },
+    answerAbTopLeft: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Top-left entry of AB',
+        description: 'Student answer for the top-left entry of AB',
+        placeholder: '???',
+        correctAnswer: '7',
+        color: '#62D0AD',
     },
 
     // ─────────────────────────────────────────
-    // OBJECT - Complex structured data
+    // SECTION 5 — The determinant
     // ─────────────────────────────────────────
-    graphSettings: {
-        defaultValue: { 
-            xMin: -10, 
-            xMax: 10, 
-            showGrid: true 
-        },
-        type: 'object',
-        label: 'Graph Settings',
-        description: 'Configuration for the graph display',
-        schema: '{ xMin: number, xMax: number, showGrid: boolean }',
+    determinantColumn1X: {
+        defaultValue: 2,
+        type: 'number',
+        label: 'First column, x',
+        description: 'Top entry of the first column of the transforming matrix',
+        min: -3,
+        max: 3,
+        step: 0.1,
+        color: '#62D0AD',
     },
-    */
+    determinantColumn1Y: {
+        defaultValue: 1,
+        type: 'number',
+        label: 'First column, y',
+        description: 'Bottom entry of the first column of the transforming matrix',
+        min: -3,
+        max: 3,
+        step: 0.1,
+        color: '#62D0AD',
+    },
+    determinantColumn2X: {
+        defaultValue: 1,
+        type: 'number',
+        label: 'Second column, x',
+        description: 'Top entry of the second column of the transforming matrix',
+        min: -3,
+        max: 3,
+        step: 0.1,
+        color: '#8E90F5',
+    },
+    determinantColumn2Y: {
+        defaultValue: 2,
+        type: 'number',
+        label: 'Second column, y',
+        description: 'Bottom entry of the second column of the transforming matrix',
+        min: -3,
+        max: 3,
+        step: 0.1,
+        color: '#8E90F5',
+    },
+    determinantHighlight: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Determinant highlight',
+        description: 'Which element of the determinant figure is highlighted: area, column1, column2',
+        color: '#62D0AD',
+        bgColor: 'rgba(98, 208, 173, 0.18)',
+    },
+    answerDeterminantValue: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Determinant of a given matrix',
+        description: 'Student answer for the determinant of a 2 by 2 matrix',
+        placeholder: '???',
+        correctAnswer: '2',
+        color: '#62D0AD',
+    },
+    answerCollapsedDeterminant: {
+        defaultValue: '',
+        type: 'select',
+        label: 'Determinant when columns line up',
+        description: 'Student choice for the determinant when both columns lie on one line',
+        placeholder: '???',
+        correctAnswer: '0',
+        options: ['0', '1', 'a negative number'],
+        color: '#8E90F5',
+    },
+
+    // ─────────────────────────────────────────
+    // SECTION 6 — The undo matrix
+    // ─────────────────────────────────────────
+    inverseColumn1X: {
+        defaultValue: 1,
+        type: 'number',
+        label: 'Undo matrix, first column x',
+        description: 'Top entry of the first column of the student undo matrix',
+        min: -3,
+        max: 3,
+        step: 0.1,
+        color: '#62D0AD',
+    },
+    inverseColumn1Y: {
+        defaultValue: 0,
+        type: 'number',
+        label: 'Undo matrix, first column y',
+        description: 'Bottom entry of the first column of the student undo matrix',
+        min: -3,
+        max: 3,
+        step: 0.1,
+        color: '#62D0AD',
+    },
+    inverseColumn2X: {
+        defaultValue: 0,
+        type: 'number',
+        label: 'Undo matrix, second column x',
+        description: 'Top entry of the second column of the student undo matrix',
+        min: -3,
+        max: 3,
+        step: 0.1,
+        color: '#8E90F5',
+    },
+    inverseColumn2Y: {
+        defaultValue: 1,
+        type: 'number',
+        label: 'Undo matrix, second column y',
+        description: 'Bottom entry of the second column of the student undo matrix',
+        min: -3,
+        max: 3,
+        step: 0.1,
+        color: '#8E90F5',
+    },
+    inverseHighlight: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Inverse highlight',
+        description: 'Which element of the undo figure is highlighted: target, moved',
+        color: '#62D0AD',
+        bgColor: 'rgba(98, 208, 173, 0.18)',
+    },
+    answerInverseMeaning: {
+        defaultValue: '',
+        type: 'select',
+        label: 'What an inverse matrix is',
+        description: 'Student choice for the meaning of an inverse matrix',
+        placeholder: '???',
+        correctAnswer: 'multiplies with it to give the identity',
+        options: ['has one over each entry', 'multiplies with it to give the identity', 'swaps the rows and columns'],
+        color: '#8E90F5',
+    },
+    answerInverseEntry: {
+        defaultValue: '',
+        type: 'text',
+        label: 'Bottom-left entry of an inverse',
+        description: 'Student answer for the bottom-left entry of the inverse of a 2 by 2 matrix',
+        placeholder: '???',
+        correctAnswer: ['-2', '−2'],
+        color: '#62D0AD',
+    },
 };
 
 /**

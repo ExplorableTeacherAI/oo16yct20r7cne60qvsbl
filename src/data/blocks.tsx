@@ -5,6 +5,14 @@ import { type ReactElement } from "react";
 // Initialize variables and their colors from this file's variable definitions
 import { useVariableStore, initializeVariableColors } from "@/stores";
 import { getDefaultValues, variableDefinitions } from "./variables";
+
+import { introMatricesBlocks } from "./sections/introMatrices";
+import { rowMeetsColumnBlocks } from "./sections/rowMeetsColumn";
+import { doesItFitBlocks } from "./sections/doesItFit";
+import { orderMattersBlocks } from "./sections/orderMatters";
+import { determinantBlocks } from "./sections/determinant";
+import { undoMatrixBlocks } from "./sections/undoMatrix";
+import { wrappingUpBlocks } from "./sections/wrappingUp";
 useVariableStore.getState().initialize(getDefaultValues());
 initializeVariableColors(variableDefinitions);
 
@@ -85,5 +93,11 @@ initializeVariableColors(variableDefinitions);
  */
 
 export const blocks: ReactElement[] = [
-    // Start adding your blocks here!
+    ...introMatricesBlocks,
+    ...rowMeetsColumnBlocks,
+    ...doesItFitBlocks,
+    ...orderMattersBlocks,
+    ...determinantBlocks,
+    ...undoMatrixBlocks,
+    ...wrappingUpBlocks,
 ];
