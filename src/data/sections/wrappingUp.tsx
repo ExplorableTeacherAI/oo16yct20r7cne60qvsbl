@@ -35,7 +35,7 @@ export const wrappingUpBlocks: ReactElement[] = [
             <EditableParagraph id="para-wrap-next" blockId="wrap-next">
                 The same rule is quietly at work when a phone rotates a photograph and when
                 a game moves every point of a character in one go. It also solves
-                simultaneous equations: write them as a single matrix, and the undo matrix
+                simultaneous equations: write them as a single matrix, and the inverse matrix
                 you dragged into place is what finishes the job in one step.
             </EditableParagraph>
         </Block>

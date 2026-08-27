@@ -1,6 +1,6 @@
 /**
- * Section 6 — The Undo Matrix
- * ===========================
+ * Section 6 — The Inverse Matrix
+ * ==============================
  * Bespoke figure: M has already pushed an L away from home, and the student
  * drags the two columns of their own matrix N until N × M puts it back. A
  * quiet control offers the tempting wrong answer — one over each entry — and
@@ -258,7 +258,7 @@ function UndoMatrixFigure() {
                 {/* Readouts in the rail beside the drawing. */}
                 <g style={{ fontVariantNumeric: "tabular-nums", ...EASE_150 }}>
                     <text x={RAIL_X} y={70} fontSize="13" fill={INK_STRUCTURE}>
-                        your undo matrix N
+                        your matrix N
                     </text>
                     <text x={RAIL_X} y={100} fontSize="13" fill={ACCENT}>
                         first column
@@ -325,7 +325,7 @@ export const undoMatrixBlocks: ReactElement[] = [
     <StackLayout key="layout-undo-heading" maxWidth="xl">
         <Block id="undo-heading" padding="md">
             <EditableH2 id="h2-undo-heading" blockId="undo-heading">
-                The Undo Matrix
+                The Inverse Matrix
             </EditableH2>
         </Block>
     </StackLayout>,
