@@ -392,10 +392,10 @@ export const rowMeetsColumnBlocks: ReactElement[] = [
     <StackLayout key="layout-row-column-insight" maxWidth="xl">
         <Block id="row-column-insight" padding="sm">
             <EditableParagraph id="para-row-column-insight" blockId="row-column-insight">
-                Every bill is two multiplications added together, never one. Three samosas
-                at two rupees is not yet a bill, because the juice still has to be paid
-                for, and that is exactly why two matrices cannot be multiplied cell by
-                cell.
+                Every bill is two multiplications added together, never one, which is
+                exactly why two matrices cannot be multiplied cell by cell. The same rule
+                applies whether the elements are positive or negative, since a negative
+                element simply pulls the total down instead of pushing it up.
             </EditableParagraph>
         </Block>
     </StackLayout>,
